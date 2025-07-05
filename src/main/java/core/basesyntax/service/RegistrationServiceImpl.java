@@ -18,16 +18,16 @@ public class RegistrationServiceImpl implements RegistrationService {
             throw new InvalidUserDataException("User cannot be null.");
         }
 
-        if (storageDao.get(user.getLogin()) != null) {
-            throw new InvalidUserDataException("User with login '"
-                    + user.getLogin()
-                    + "' already exists.");
-        }
-
         if (user.getLogin() == null || user.getLogin().length() < MIN_LOGIN_LENGTH) {
             throw new InvalidUserDataException("Login must be at least "
                     + MIN_LOGIN_LENGTH
                     + " characters long.");
+        }
+
+        if (storageDao.get(user.getLogin()) != null) {
+            throw new InvalidUserDataException("User with login '"
+                    + user.getLogin()
+                    + "' already exists.");
         }
 
         if (user.getPassword() == null || user.getPassword().length() < MIN_PASSWORD_LENGTH) {
