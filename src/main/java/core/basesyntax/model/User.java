@@ -53,7 +53,7 @@ public class User {
                 && Objects.equals(password, user.password)
                 && Objects.equals(age, user.age);
     }
-
+//
     @Override
     public int hashCode() {
         return Objects.hash(login, password, age);
